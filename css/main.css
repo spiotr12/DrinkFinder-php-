@@ -1,0 +1,70 @@
+/* ==========================================================================
+   Default styles
+   ========================================================================== */
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+
+/* ==========================================================================
+   Piotr's custom styles
+   ========================================================================== */
+.fullscreen{
+	min-height: 100vh;
+}
+
+#price-max{
+	margin-top: -10px;
+}
+
+.search-submit{
+	width: 100%;
+}
+
+.footer{
+	clear: both;
+	margin-top: 40px;
+}
+
+/* ==========================================================================
+   Konrad's custom styles
+   ========================================================================== */
+/*setting up piture like colors for buttons*/
+.weed{
+    /*background-color: #ffba01;*/
+    background-image: url('../img/beer_bg.jpg');
+}
+
+.weed:hover{
+    /*background-color: #8AC007;*/
+    background-image: url('../img/beer_bg_h.jpg');
+}
+
+/*
+* Footer
+*/
+
+/*customing a footer*/
+.customfooter{
+    margin-bottom: -20px;
+    margin-top: -20px;
+}
+
+/*setting up color of footer*/
+.giveColor{
+    background-color: #222;
+    
+}
+/*setting up text in footer*/
+.center-this{
+    text-align: center;
+    color:#E0E0E0;
+}
+/*setting up color in dropbox*/
+.dropdowncolor{
+    background-color:#222;
+}
+
+.extend{
+	overflow: hidden;
+}
