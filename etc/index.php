@@ -46,14 +46,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-		<script src="js/vendor/jquery.tablesorter.js"></script>
-
-
-
-
 
 
     </head>
@@ -75,8 +68,8 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
                 </div>
                 <div id="navbar" class="navbar-collapse collapse extend">
 					<div class="navbar-form navbar-right" role="form">
-						<div class="display-inline">
-							<form class="form-in-nav pull-left" role="form" name="search" action="php/search.php" method="get">
+						<div class="form-group">
+							<form class="form-in-nav" role="form" name="search" action="php/search.php" method="get">
 								<div class="input-group">
 									<!-- Search engine -->
 									<input type="text" name="searchFor" class="form-control" placeholder="Search for...">								<span class="input-group-btn">
@@ -86,8 +79,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 									</span>
 								</div>
 							</form>
-<!--							&nbsp; space between buttons
-							 /input-group 
+							<!-- /input-group -->
 							<div class="btn-group input-group dropdown">
 								<button class="btn weed" type="button" ><span class="glyphicon glyphicon-user"></span></button>
 								<button class="btn weed dropdown-toggle" data-toggle="dropdown">
@@ -102,7 +94,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 											<input name="utf8" type="hidden" value="&#x2713;" />
 											<input name="authenticity_token" type="hidden" value="4L/A2ZMYkhTD3IiNDMTuB/fhPRvyCNGEsaZocUUpw40=" />
 										</div>
-										 Boxes for login and password in drop down menu
+										<!-- Boxes for login and password in drop down menu-->
 										<fieldset class='textbox' style="padding:10px">
 											<input id = "username" style="margin-top: 8px" type="text" placeholder="Username"/>
 											<input style="margin-top: 8px" type="password" placeholder="Passsword" />
@@ -110,7 +102,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 										</fieldset>
 									</form>
 								</div>
-							</div> -->
+							</div> 
 						</div>
 					</div><!-- /.row -->
                 </div><!-- /.row -->
@@ -220,32 +212,31 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
             </div>
         </section>
 
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
+
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
 
-		<script>
-			$(function () {
-				$('#sorttable').tablesorter();
-			});
-		</script>
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-			(function (b, o, i, l, e, r) {
-				b.GoogleAnalyticsObject = l;
-				b[l] || (b[l] =
-						function () {
-							(b[l].q = b[l].q || []).push(arguments)
-						});
-				b[l].l = +new Date;
-				e = o.createElement(i);
-				r = o.getElementsByTagName(i)[0];
-				e.src = '//www.google-analytics.com/analytics.js';
-				r.parentNode.insertBefore(e, r)
-			}(window, document, 'script', 'ga'));
-			ga('create', 'UA-XXXXX-X', 'auto');
-			ga('send', 'pageview');
+									(function (b, o, i, l, e, r) {
+										b.GoogleAnalyticsObject = l;
+										b[l] || (b[l] =
+												function () {
+													(b[l].q = b[l].q || []).push(arguments)
+												});
+										b[l].l = +new Date;
+										e = o.createElement(i);
+										r = o.getElementsByTagName(i)[0];
+										e.src = '//www.google-analytics.com/analytics.js';
+										r.parentNode.insertBefore(e, r)
+									}(window, document, 'script', 'ga'));
+									ga('create', 'UA-XXXXX-X', 'auto');
+									ga('send', 'pageview');
         </script>
     </body>
 </html>

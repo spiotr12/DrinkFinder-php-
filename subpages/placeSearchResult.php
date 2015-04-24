@@ -68,7 +68,7 @@ $resultArray = mysqli_fetch_array($result);
 
 		<!--show results-->
 		<div class="col-lg-9 query-result">
-			<table class="table place-table">
+			<table id="sorttable" class="table place-table tablesorter">
 				<!--ignore validation error-->
 				<thead>
 				<th class="result-name">

@@ -8,7 +8,7 @@ $result = mysqli_query($db_con, $query);
 $resultArray = mysqli_fetch_array($result);
 do {
 	?>
-	<div class="container" >
+	<div class="container img" >
 		<!--Place for individual code-->
 
 		<!--making rows and columns which will be responsive to window size-->
