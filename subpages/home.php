@@ -2,20 +2,24 @@
 <div class="container" id="MainSearchBar">
 	<!--The row inside the container which will hold the search bar-->
 	<div class="row">
-		<!--The div which will contain the search bar inside the row,
-			of type input-group-->
-		<div class="input-group" >
-			<!--Sets the text for the search bar and accepts user input
-				in the form of text/numbers-->
-			<input type="text"  class="form-control" placeholder="Search for...">
-			<!--The "magnifiying glass" search icon at the end of the search bar
-				taken from bootstrap's glyphicon database-->
-			<span class="input-group-btn">
-				<!--The magnifying glass icon as a button, interactivity to
-					be added later-->
-				<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-			</span>
-		</div><!-- /input-group -->
+		<form role="form" name="search" action="php/search.php" method="get">
+			<!--The div which will contain the search bar inside the row,
+				of type input-group-->
+			<div class="input-group" >
+				<!--Sets the text for the search bar and accepts user input
+					in the form of text/numbers-->
+				<input type="hidden" name="link" value="search">
+				<input type="text" name="searchFor" class="form-control" placeholder="Search for...">
+				<!--The "magnifiying glass" search icon at the end of the search bar
+					taken from bootstrap's glyphicon database-->
+				<span class="input-group-btn">
+					<!--The magnifying glass icon as a button, interactivity to
+						be added later-->
+					<button class="btn btn-default" type="submit" name="searchType" value="drink"><img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/></button>
+					<button class="btn btn-default" type="submit" name="searchType" value="place"><img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/></button>
+				</span>
+			</div><!-- /input-group -->
+		</form>
 	</div>
 </div>
 

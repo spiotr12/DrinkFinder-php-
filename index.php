@@ -4,7 +4,7 @@ session_start();
 include './etc/db_access.php';
 
 // Create connection
-$db_con = mysqli_connect($db_host, $db_username, $db_password)
+$db_con = mysqli_connect($db_host, $db_username, $db_password, $db_dbname)
 		or die("Unable to connect to MySQL");
 
 // Check connection
@@ -64,18 +64,21 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/Logo.png" alt=""/></a>
+                    <a class="navbar-brand" href="index.php?link=home"><img src="img/Logo.png" alt=""/></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse extend">
 					<div class="navbar-form navbar-right" role="form">
 						<div class="form-group">
-							<div class="input-group">
-								<!-- Search engine -->
-								<input type="text" class="form-control" placeholder="Search for...">
-								<span class="input-group-btn">
-									<button class="btn weed" type="button"><span class="glyphicon glyphicon-search"></span></button>
-								</span>
-							</div>
+							<form class="form-in-nav" role="form" name="search" action="php/search.php" method="get">
+								<div class="input-group">
+									<!-- Search engine -->
+									<input type="text" name="searchFor" class="form-control" placeholder="Search for...">								<span class="input-group-btn">
+										<button class="btn weed" type="submit" name="searchType" value="drink"><img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/></button>
+										<button class="btn weed" type="submit" name="searchType" value="place"><img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/></button>
+
+									</span>
+								</div>
+							</form>
 							<!-- /input-group -->
 							<div class="btn-group input-group dropdown">
 								<button class="btn weed" type="button" ><span class="glyphicon glyphicon-user"></span></button>
@@ -172,7 +175,9 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 			switch ($subpage) {
 				case "home" : include './subpages/home.php';
 					break;
-				case "search" : include './subpages/searchResult.php';
+				case "drinkSearch" : include './subpages/drinkSearchResult.php';
+					break;
+				case "placeSearch" : include './subpages/placeSearchResult.php';
 					break;
 				case "place" : include './subpages/place.php';
 					break;

@@ -26,6 +26,18 @@ body {
 	margin-top: 40px;
 }
 
+.form-in-nav{
+	clear: none;
+}
+
+.place-name{
+	margin-bottom: 0px;
+}
+
+.place-type{
+	color: #737373;
+	font-size: medium;
+}
 /* ==========================================================================
    Konrad's custom styles
    ========================================================================== */
