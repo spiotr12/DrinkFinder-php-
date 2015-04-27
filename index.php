@@ -50,12 +50,11 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 		<script src="js/vendor/jquery.tablesorter.js"></script>
-
-
-
-
-
-
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/flick/jquery-ui.css">
+        <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+        <script src="https://apis.google.com/js/client:platform.js" async defer></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="js/loginScript.js" type="text/javascript"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -86,31 +85,31 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 									</span>
 								</div>
 							</form>
-<!--							&nbsp; space between buttons
-							 /input-group 
-							<div class="btn-group input-group dropdown">
-								<button class="btn weed" type="button" ><span class="glyphicon glyphicon-user"></span></button>
-								<button class="btn weed dropdown-toggle" data-toggle="dropdown">
-
-									<span class="caret"></span>
-									<span class="sr-only">Toggle Dropdown</span>
-								</button>
-								<div class="dropdown-menu dropdowncolor" onclick="username(event)" >
-
-									<form style="margin: 0px" accept-charset="UTF-8" action="/sessions" method="post"> 
-										<div style="margin:0;padding:0;display:inline">
-											<input name="utf8" type="hidden" value="&#x2713;" />
-											<input name="authenticity_token" type="hidden" value="4L/A2ZMYkhTD3IiNDMTuB/fhPRvyCNGEsaZocUUpw40=" />
-										</div>
-										 Boxes for login and password in drop down menu
-										<fieldset class='textbox' style="padding:10px">
-											<input id = "username" style="margin-top: 8px" type="text" placeholder="Username"/>
-											<input style="margin-top: 8px" type="password" placeholder="Passsword" />
-											<input class="btn weed btn-sm center-block" name="commit" type="submit" value="Log In" style="margin-top: 7px;" />
-										</fieldset>
-									</form>
-								</div>
-							</div> -->
+							<!--							&nbsp; space between buttons
+														 /input-group 
+														<div class="btn-group input-group dropdown">
+															<button class="btn weed" type="button" ><span class="glyphicon glyphicon-user"></span></button>
+															<button class="btn weed dropdown-toggle" data-toggle="dropdown">
+							
+																<span class="caret"></span>
+																<span class="sr-only">Toggle Dropdown</span>
+															</button>
+															<div class="dropdown-menu dropdowncolor" onclick="username(event)" >
+							
+																<form style="margin: 0px" accept-charset="UTF-8" action="/sessions" method="post"> 
+																	<div style="margin:0;padding:0;display:inline">
+																		<input name="utf8" type="hidden" value="&#x2713;" />
+																		<input name="authenticity_token" type="hidden" value="4L/A2ZMYkhTD3IiNDMTuB/fhPRvyCNGEsaZocUUpw40=" />
+																	</div>
+																	 Boxes for login and password in drop down menu
+																	<fieldset class='textbox' style="padding:10px">
+																		<input id = "username" style="margin-top: 8px" type="text" placeholder="Username"/>
+																		<input style="margin-top: 8px" type="password" placeholder="Passsword" />
+																		<input class="btn weed btn-sm center-block" name="commit" type="submit" value="Log In" style="margin-top: 7px;" />
+																	</fieldset>
+																</form>
+															</div>
+														</div> -->
 						</div>
 					</div><!-- /.row -->
                 </div><!-- /.row -->
@@ -195,7 +194,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 					break;
 
 				//default
-				default : include './subpages/home.php';
+				default : include './subpages/welcome.php';
 					break;
 			}
 			?>
@@ -235,9 +234,9 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 			(function (b, o, i, l, e, r) {
 				b.GoogleAnalyticsObject = l;
 				b[l] || (b[l] =
-						function () {
-							(b[l].q = b[l].q || []).push(arguments)
-						});
+					function () {
+						(b[l].q = b[l].q || []).push(arguments)
+					});
 				b[l].l = +new Date;
 				e = o.createElement(i);
 				r = o.getElementsByTagName(i)[0];

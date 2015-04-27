@@ -42,6 +42,10 @@ body {
 .display-inline{
 	display: inline;
 }
+
+.continue-form{
+    min-height: 1px;
+}
 /* ==========================================================================
    Konrad's custom styles
    ========================================================================== */
@@ -118,4 +122,127 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 
 .red-backgroud{
 	background-color: red;
+}
+
+/* ==========================================================================
+   Christopher's custom styles
+   ========================================================================== */
+
+/*CSS which affects the search bar on the home page*/
+#MainSearchBar{
+    /*Creates space below the search bar*/
+    margin-bottom: 100px;
+}
+
+/*CSS which affects the container promotionBox on the home page*/ 
+.promotionBox{
+    /*Creates a solid black border around the promotion box 1px in size*/
+    border: 1px solid black;
+    /*Sets the background colour to be grey*/
+    background-color: #666666;
+}
+
+/*CSS which affects the 4 infoBox's on the home page'*/
+.infoBox{
+    /*Creates a solid black border around the info box 1px in size*/
+    border: 1px solid black;
+    /*Sets the background colour to be a light yellow*/
+    background-color: lightgoldenrodyellow
+}
+
+/*CSS which affects both of the infoContainer's wrapped around the infoBox's
+    on the home page*/
+.infoContainer{
+    /*Creates a margin around the infoContainer*/
+    margin: 75px;
+}
+
+/*CSS which affects the slide-image's on the carousel on the home page*/
+.slide-image{
+    /*Sets the slide images to have a width of 800px*/
+    width: 800px;
+}
+
+/*CSS which affects the infoImage's stored inside the infoBox's on the home
+    page*/
+.infoImage{
+    /*Creates a small 10px margin around the images in the infoBox's*/
+    margin: 10px;
+}
+
+/*CSS which affects the image displayed on the welcome page */
+.WelcomeImage{
+    /*Creates a margin of 100px around the image*/
+    margin-top: 100px;    
+}
+
+/*CSS which affects the welcome text on the welcome page*/
+#welcomeMessage{
+    /*Creates a small amount of padding around the text in order to stop
+        it bumping into the welcomeImage*/
+    padding: 2cm;        
+}
+
+/*CSS which affects the body of all of the web pages, auto genereated by
+    bootstrap*/
+body {
+    /*Creates a small amount of padding at the top of the body, to seperate
+        it from the header*/
+    padding-top: 50px;
+    /*Creates a small amount of padding at the bottom of the body, to seperate
+        it from the footer*/
+    padding-bottom: 20px;
+}
+
+/*CSS which affects how the buttons look on the welcome page*/
+.button {
+	/*Creates a solid 3px border coloured a dark blue*/
+   border: 3px solid #0a3c59;
+   /*Sets the background colour of the button to a lighter blue*/
+   background: #3e779d;
+   /*Gives the background colour a gradient colour between #65a9d7 and #3e779d
+        which is compatible with chrome and safari */
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   /*Gives the background colour a linear gradient colour between #65a9d7 and
+    #3e779d which is compatible with chrome and safari */
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   /*Gives the background colour a linear gradient colour between #65a9d7 and
+    #3e779d which is compatible with firefox */
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   padding: 5px 10px;
+   /*Gives the buttons a curved corner of radius 29px, which is compatible with
+     chrome and safari*/
+   -webkit-border-radius: 29px;
+   /*Gives the buttons a curved corner of radius 29px, which is compatible with
+     firefox*/
+   -moz-border-radius: 29px;
+   /*Gives the buttons a curved corner of radius 29px*/
+   border-radius: 29px;
+   /*Sets the colour of the text to be black*/
+   color: #000000;
+   /*Sets the size of the font to be 17px*/
+   font-size: 14px;
+   /*Sets the font of the button to be sans-serif*/
+   font-family: sans-serif;
+   /*Sets the button to be in the middle of its parent element*/
+   vertical-align: middle;
+   /*Creates a 5px margin to the right of the button*/
+   margin-right: 5px;
+   /*Creates a 35px margin to the left of the button*/
+   margin-left: 35px;
+   /*Makes the button invisible on page load*/
+   display:none;
+}
+
+/*CSS which affects what happens when the buttons are hovered over on the
+    welcome page*/
+.button:hover {
+   /*Set's the colour of the text to white when the button is hovered over'*/
+   color: #fff;
+}
+#datePicker{
+    display: none;
+    
+}#continue{
+    display:none;
 }
