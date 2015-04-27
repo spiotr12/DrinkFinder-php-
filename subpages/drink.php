@@ -1,3 +1,13 @@
+<?php
+$id = $_GET['id'];
+
+$query = "SELECT * FROM drink WHERE drink_id = $id";
+
+$result = mysqli_query($db_con, $query);
+
+$resultArray = mysqli_fetch_array($result);
+do {
+	?>
 <!--A container which contains all the information about the drink-->
 <div class="container">
 	<!--A row which contains 2 columns-->
@@ -9,19 +19,16 @@
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-3">
 					<!--The image of the drink, sourced online-->
-					<img alt="Picture of drink being Described" src="http://www.bevdig.com/uploads/2/6/7/4/26740497/5709142_orig.jpg"/>    
-				</div>
+					<!--<div id="drinkImage">--><img class="drink-image img-responsive" src="img/drinks/<?php echo 	$resultArray['drink_id'];?>.jpg" alt="Image for <?php echo $resultArray['drink_name'];?>"/></div>    
+				<!--</div>-->
 			</div>
 			<!--The second row in the column which contains the description-->
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-3">
 					<!--The description of the drink-->
-					<h1>Beautiful drink</h1>
-					<p> Description of drink (56.826cl)</p>
-					<p>More desc about this beautiful drink</p>
-					<p>red and orange liquid...</p>
-					<p>great drink</p>
-					<p>so great</p>
+					<h3 class="drink-name"><?php echo $resultArray['drink_name']; ?></h3>
+					<!--description of drink below-->
+					<p><?php echo $resultArray['details']; ?></p>
 				</div>       
 			</div>
 		</div>
@@ -63,3 +70,6 @@
 		</div>
 	</div>
 </div>
+<?php
+} while ($resultArray = mysqli_fetch_array($result));
+?>
