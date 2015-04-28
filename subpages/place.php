@@ -43,7 +43,7 @@ do {
                         $drinkResult = mysqli_query($db_con, $drinkQuery);
                         $drinkArray = mysqli_fetch_array($drinkResult);
 
-                        echo "<li class='list-group-item'><a href='index.php?link=drink&id=" . $drinkId . "'>" . $drinkArray['drink_name'] . "</a></li>";
+                        echo "<li class='list-group-item'><a href='drinker.php?link=drink&id=" . $drinkId . "'>" . $drinkArray['drink_name'] . "</a></li>";
                     } while ($menuArray = mysqli_fetch_array($menuResult));
                     ?>
                 </ul>

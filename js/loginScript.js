@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 var allowedAccess = null;
+var facebookcheck = 0;
 window.onload = function () {
     go();
 };
@@ -47,7 +48,7 @@ function signinCallback(authResult) {
                     else {
                         allowedAccess = true;
                     }
-                    
+
                     document.getElementById('googleLogin').innerHTML =
                             "<h2> Hello " + name + "</h2>" +
                             "<p>" + allowedAccess + "</p>";
@@ -72,40 +73,10 @@ function signinCallback(authResult) {
         console.log('Sign-in state: ' + authResult['error']);
     }
 
-    //Facebook Login Functions
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '579446912158414',
-            xfbml: true,
-            version: 'v2.3'
-        });
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id))
-            return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=579446912158414";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
     $(function () {
         //Call the datepicker
         $("#datePicker").datepicker({dateFormat: 'dd/mm/yy'});
-		$('#sorttable').tablesorter();
+        $('#sorttable').tablesorter();
 
         //Age Validation
         $('#submit').click(function () {
@@ -137,20 +108,56 @@ function signinCallback(authResult) {
                     }
                 }
             }
-            document.getElementById('allowAccess').setAttribute('style','display:none');
-            if (allowedAccess == true) {                
+            document.getElementById('allowAccess').setAttribute('style', 'display:none');
+            if (allowedAccess == true) {
                 document.getElementById('googleLogin').innerHTML =
                         "<p>You are allowed to enter, please press continue!</p>"
-                document.getElementById('isAllowedInput').setAttribute('value','1');     
+                document.getElementById('isAllowedInput').setAttribute('value', '1');
             }
-            else{
+            else {
                 document.getElementById('googleLogin').innerHTML =
                         "<p>You are not allowed to enter</p>"
             }
-            document.getElementById('continue').setAttribute('style','display:inline');
+            document.getElementById('continue').setAttribute('style', 'display:inline');
         })
     });
-
 }
 
+//Facebook Login Functions
+var name;
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: '579446912158414',
+        xfbml: true,
+        version: 'v2.3'
+    });
+};
 
+function facebookLoginCallBack() {
+    FB.api('/me', {fields: 'last_name'}, function (response) {
+        console.log(response);
+    });
+}
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+        return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=579446912158414";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+    

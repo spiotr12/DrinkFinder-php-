@@ -10,96 +10,80 @@ $result = mysqli_query($db_con, $query);
 
 $resultArray = mysqli_fetch_array($result);
 ?>
+<title>Place search: <?php echo $searchTerm; ?></title>
 <div class="container fullscreen">
-	<h1>Place</h1>
 	<div class="row place-search">
-		<!--search form-->
-		<div class="col-lg-12">
-			<form>
-				<!-- PLACE FOR A SEARCH BAR: to copy form code from home page-->
-				<!--search bar-->
-			</form>
+		<div class="row">
+			<div class="col-md-2 col-md-offset-1">
+				<h1>Place</h1>
+			</div>				
 		</div>
-
 		<!--create query-->
-		<div class="col-lg-2 create-query">
+		<div class="row create-query col-md-offset-1">
 			<!--SEARCH FIlTER FOR PLACE-->
 			<form class="input-group">
-<!--				<p class="label label-info">What are you looking for?</p>
-				<div class="row">
-					<span class="input-group-addon">
-						<input class="radio input-group-addon" type="radio" name="searchFor" value="place"/> Place
-					</span>
-					<span class="input-group-addon">
-						<input class="radio input-group-addon" type="radio" name="searchFor" value="drink"/> Drink
-					</span>
-				</div>
-				<br/>-->
-
-				<p class="label label-info">Name</p>
-				<div class="row">
+				<div class="col-md-3">
+					<p class="label label-info">Name</p>
 					<input class="form-control" type="text" name="name" value="<?php echo $searchTerm; ?>"/>
 				</div>
-				<br/>
 
-				<p class="label label-info">Post code</p>
-				<div class="row">
+				<div class="col-md-3">
+					<p class="label label-info">Post code</p>
 					<input class="form-control" type="text" name="postcode"/>
 				</div>
-				<br/>
 
-				<p class="label label-info">TypeTODO</p>
-				<div class="row form-group">
-					<!--<label for="sel1">Select list:</label>-->
+				<div class="col-md-3 form-group">
+					<p class="label label-info">Type</p>
 					<select class="form-control" id="sel1">
+						<option value=""></option>
 						<option value="bar">Bar</option>
 						<option value="pub">Pub</option>
 						<option value="club">Club</option>
 					</select>
 				</div>
-				<br/>
 
-				<p class="label label-info">Submit</p>
-				<div class="row">
+				<div class="col-md-1">
+					<p class="label label-info">Submit</p>
 					<input class="btn btn-default" type="submit" value="Submit"/>
 				</div>
 			</form>
 		</div>
+		<div class="row">
+			<!--show results-->
+			<div class="col-md-9 col-md-offset-1 query-result">
+				<table id="sorttable" class="table place-table tablesorter">
+					<!--ignore validation error-->
+					<thead>
+					<th class="result-name">
+						Name
+					</th>
+					<th class="result-type">
+						Type
+					</th>
+					<th class="result-postcode">
+						Post code
+					</th>
+					<th class="result-rate">
+						Rate
+					</th>
+					</thead>
+					<tbody>
+						<?php
+						do {
+							echo "<tr>";
+							echo "	<td class = 'result-name'><a href='drinker.php?link=place&id=" . $resultArray['place_id'] . "'>" . $resultArray['place_name'] . "</a></td>";
+							echo "	<td class = 'result-type'>" . $resultArray['type'] . "</td>";
+							echo "	<td class = 'result-postcode'>" . $resultArray['post_code'] . "</td>";
+							echo "	<td class = 'result-rate'>" . $resultArray['average_rate'] . "</td>";
+							echo "</tr>";
+						} while ($resultArray = mysqli_fetch_array($result));
 
-		<!--show results-->
-		<div class="col-lg-9 query-result">
-			<table id="sorttable" class="table place-table tablesorter">
-				<!--ignore validation error-->
-				<thead>
-				<th class="result-name">
-					Name
-				</th>
-				<th class="result-type">
-					Type
-				</th>
-				<th class="result-postcode">
-					Post code
-				</th>
-				<th class="result-rate">
-					Rate
-				</th>
-				</thead>
-				<tbody>
-					<?php
-					do {
-						echo "<tr>";
-						echo "	<td class = 'result-name'><a href='index.php?link=place&id=" . $resultArray['place_id'] . "'>" . $resultArray['place_name'] . "</a></td>";
-						echo "	<td class = 'result-type'>" . $resultArray['type'] . "</td>";
-						echo "	<td class = 'result-postcode'>" . $resultArray['post_code'] . "</td>";
-						echo "	<td class = 'result-rate'>" . $resultArray['average_rate'] . "</td>";
-						echo "</tr>";
-					} while ($resultArray = mysqli_fetch_array($result));
 
-
-					mysqli_close($db_con);
-					?>
-				</tbody>
-			</table>
+						mysqli_close($db_con);
+						?>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
