@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 var allowedAccess = null;
-var facebookcheck = 0;
 window.onload = function () {
     go();
 };
@@ -51,7 +50,8 @@ function signinCallback(authResult) {
 
                     document.getElementById('googleLogin').innerHTML =
                             "<h2> Hello " + name + "</h2>" +
-                            "<p>" + allowedAccess + "</p>";
+                            "<p>You have successfully logged in with Google+</p>" +
+                            "<p>Please press Continue to Enter the Website</p>";
                 }
                 else {
                     document.getElementById('googleLogin').innerHTML =
@@ -111,12 +111,12 @@ function signinCallback(authResult) {
             document.getElementById('allowAccess').setAttribute('style', 'display:none');
             if (allowedAccess == true) {
                 document.getElementById('googleLogin').innerHTML =
-                        "<p>You are allowed to enter, please press continue!</p>"
+                        "<p>You are allowed to enter, please press continue!</p>";
                 document.getElementById('isAllowedInput').setAttribute('value', '1');
             }
             else {
                 document.getElementById('googleLogin').innerHTML =
-                        "<p>You are not allowed to enter</p>"
+                        "<p>You are not allowed to enter</p>";
             }
             document.getElementById('continue').setAttribute('style', 'display:inline');
         })
@@ -124,7 +124,6 @@ function signinCallback(authResult) {
 }
 
 //Facebook Login Functions
-var name;
 window.fbAsyncInit = function () {
     FB.init({
         appId: '579446912158414',
@@ -133,10 +132,27 @@ window.fbAsyncInit = function () {
     });
 };
 
+var name;
+
+function welcomeUser(){
+    document.getElementById('WelcomeMessage').setAttribute('style', 'display:none')
+    document.getElementById('googleLogin').setAttribute('style', 'display:none');
+    document.getElementById('facebookLogin').innerHTML =
+            "<h2> Hello " + name + "</h2>" +
+            "<p>You have successfully logged in with Facebook</p>" +
+            "<p>Please press Continue to Enter the Website</p>";
+    document.getElementById('isAllowedInput').setAttribute('value', '1');
+    document.getElementById('continue').setAttribute('style', 'display:inline');
+    
+}
 function facebookLoginCallBack() {
-    FB.api('/me', {fields: 'last_name'}, function (response) {
-        console.log(response);
-    });
+    
+    FB.api('/me', {fields: 'name'}, function (response) {
+        name = response.name;    
+        welcomeUser();
+    });    
+    
+
 }
 
 (function (d, s, id) {

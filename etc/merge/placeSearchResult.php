@@ -19,8 +19,8 @@ $resultArray = mysqli_fetch_array($result);
 			</div>				
 		</div>
 		<!--create query-->
-<!--		<div class="row create-query col-md-offset-1">
-			SEARCH FIlTER FOR PLACE
+		<div class="row create-query col-md-offset-1">
+			<!--SEARCH FIlTER FOR PLACE-->
 			<form class="input-group">
 				<div class="col-md-3">
 					<p class="label label-warning">Name</p>
@@ -47,11 +47,11 @@ $resultArray = mysqli_fetch_array($result);
 					<input class="btn btn-default weed" type="submit" value="Submit"/>
 				</div>
 			</form>
-		</div>-->
+		</div>
 		<div class="row">
 			<!--show results-->
 			<div class="col-md-9 col-md-offset-1 query-result">
-				<table id="sorttable" class="table place-table tablesorter search-result-table">
+				<table id="sorttable" class="table place-table tablesorter search-result-table" >
 					<!--ignore validation error-->
 					<thead>
 					<th class="result-name">

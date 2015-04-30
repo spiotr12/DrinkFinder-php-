@@ -43,11 +43,10 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
         <link rel="stylesheet" href="css/bootstrap.min.css">
-
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
@@ -81,41 +80,23 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 
         <!--A container with a 2x2 structure -->
         <div class="container">
-            <!--The first row -->
+            <!--The first row-->
             <div class="row">
-                <!--Spanning across both columns, a div which contains
-                    a welcome message to the user, takes up 10/12 available
-                     bootstrap columns, starting from the second column-->
-                <div class="col-md-10 col-md-offset-1 WelcomeBox">
-                    <!--The welcome message to be displayed to the user-->
-                    <h1> Welcome!</h1>
-                </div>
-            </div>
-            <!--The second row-->
-            <div class="row">
-                <!--The first column of this row, takes up 6/12 available
+                <!--The first column of this row, takes up 4/12 available
                      bootstrap columns, starting from the first column-->
-                <div class=" col-md-6 WelcomeImage">
-                    <img alt="Age verification splash image" src="http://www.wizid.com.au/images/wristbands/wristbands-tyvek-25mm-age-verified-over-18.jpg"/>
-                </div>
-                <!--The second column of this row containing two rows
-                    , takes up 4/12 available bootstrap columns,
-                    starting from the eighth column-->
-                <div class="col-md-4 col-md-offset-2">
-                    <!--The first row inside this column-->
-                    <div class="row">
-                        <!--Div which contains a welcome message to the user-->
-                        <div id="WelcomeMessage">
-                            <!--A warning message to the user that the content
-                                which they wish to view has an age gate-->
-                            <h3>You must login to enter this website, please login using one of the buttons below! :)
-                            </h3>
-                        </div>
+                <div class="col-md-4">
+                    <!--Div which contains a welcome message to the user-->
+                    <div id="WelcomeMessage">
+                        <!--A warning message to the user that the content
+                            which they wish to view has an age gate-->
+                        <h1>Welcome!</h1>
+                        <h3>You must login to enter this website, please login using one of the buttons below! :)
+                        </h3>
                     </div>
                     <!--The second row inside this column-->
                     <div class="row">
                         <!--Contains the google+ login button-->
-                        <div id="googleLogin">
+                        <div id="googleLogin" class="login">
                             <span id="signinButton">
                                 <span
                                     class="g-signin"
@@ -130,16 +111,31 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
                     </div>
                     <div class="row">
                         <!--Contains the facebook login button-->
-                        <div id="facebookLogin">
-                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true" onlogin="doStuff();"></div>
+                        <div id="facebookLogin" class="login">
+                            <div id="fb-root"></div>
+                            <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true" onlogin="doStuff();"></div>
                         </div>
                     </div>
                     <div class="row">
-                        <div>
+                        <div id="allowAccess" class="login">
                             <input id="datePicker" type="text"/>
                             <a href='#' id="submit" class='button'>Submit</a> 
                         </div>
+                        <div id="continue" class="continue-form">
+                            <form role="form" method="post" action="php/continueToPage.php">
+                                <div class="input-group" style="visibility: visible;">
+                                    <input id="isAllowedInput" type="hidden" name="isAllowed" value="0"/>
+                                </div>
+                                <button class="btn btn-success" value="continue" type="submit">Continue</button>
+                            </form>
+                        </div>
                     </div>
+
+                </div>
+                <!--The second column of this row containing six columns
+                    starting from the seventh column-->
+                <div class=" col-md-6 col-md-offset-2 WelcomeImage">
+                    <img alt="Age verification splash image" src="../img/wristbands2.png"/>
                 </div>
             </div>
         </div>

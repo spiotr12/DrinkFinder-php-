@@ -32,7 +32,7 @@ if (isset($_POST['isAllowed'])) {
 echo "<br/>Session: " . $_SESSION['sess_isEighteen'];
 
 ob_flush();
-//header("Location: ../drinker.php?link=home");
+header("Location: ../drinker.php?link=home");
 ?>
 <html>
 	<head>

@@ -253,38 +253,45 @@ if (isset($_SESSION['sess_isEighteen'])) {
 			// filter table
 			$(document).ready(function () {
 				// set table and filter
-				var table = $('#tableResult');
+				var table = $('table#sorttable');
 				var filter = $('#tableFilter');
 				var tableArray = table.find('tr').toArray();
+				// get drink filter buttons:
 				filter.find('input:checkbox').click(function () {
 					var clickedCheckbox = $(this);
-					var selectedTypes = getSelected();
-					var str = "Rows which match filter:\n";
+					// $this will contain a reference to the checkbox   
+//						var type = clickedCheckbox.attr('value'); // gets the 
+					var selectedTypes = getSelected(); // gets the 
+//						alert(type + " is checked");
+					
+//						alert(tableArray);
+					var str = "";
 					$.each(tableArray, function (index, value) {
 						var rowType = $(this).children("td.type");
-						var rowName = $(this).children("td.name");
-						if (selectedTypes.length > 0) {
-							if ($.inArray(rowType.attr('value'), selectedTypes) == -1) {
-								// creates string to perform test
-//								str += "value: " + rowName.attr('value') + " -> inArray: " + $.inArray(rowType.attr('value'), selectedTypes) + "\n";
-								// hide things which do not match filters			
-								$(this).hide();
-							} else {
-								// show things which match filters
-								$(this).show();
-							}
-						} else {
-							// show all if no filter is selected
-							$(this).show();
+						if ($.inArray(rowType.attr('value'), selectedTypes) == -1) {
+							alert(rowType.children('td.name').attr('value'));
+							str += rowType.children('td.name').attr('value') + ", ";
+//								console.log(ihref + '<br />');
+//								alert($(this).children('td.name').attr('value'));
 						}
 //							if ($(this).attr('value') == "beer") {
 //							}
 					});
-//					alert(str); // 
+//					alert(str);
 				});
+//				var priceMin = $('#priceMin');
+//				priceMin.prop('checked', true)
+//				{
+//					alert('checked');
+//				}
+//				priceMin.prop('checked', false)
+//				{
+//					alert('unchecked');
+//				}
 			});
 			/*
-			 * Returns array of all selected filter 
+			 * Returns array of all selected types
+			 * Return 
 			 */
 			function getSelected() {
 				var filter = $('#tableFilter').find('input:checkbox').toArray();
@@ -296,7 +303,7 @@ if (isset($_SESSION['sess_isEighteen'])) {
 						str += $(this).attr('value') + ", ";
 					}
 				});
-//				alert("Selected types:\n" + selectedTypes);
+//				alert(selectedTypes);
 				return selectedTypes;
 			}
 		</script>

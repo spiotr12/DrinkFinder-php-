@@ -15,8 +15,8 @@
                 <span class="input-group-btn">
                     <!--The magnifying glass icon as a button, interactivity to
                             be added later-->
-                    <button class="btn btn-default" type="submit" name="searchType" value="drink"><img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/></button>
-                    <button class="btn btn-default" type="submit" name="searchType" value="place"><img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/></button>
+                    <button class="btn weed" type="submit" name="searchType" value="drink"><img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/></button>
+                    <button class="btn weed" type="submit" name="searchType" value="place"><img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/></button>
                 </span>
             </div><!-- /input-group -->
         </form>
@@ -29,7 +29,7 @@
     <!--The first 2x2 container -->
     <div class="row infoContainer">
         <!--The first row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-1"> 
+        <div class=" infoBox col-md-5"> 
             <!--The header for this field-->
             <h4>Bar/Pub of the week</h4>
             <div class="row">
@@ -37,18 +37,18 @@
                 <div class="col-md-6 infoPicture">    
                     <!--Contains an image displaying our bar/pub of the
                             week, placeholder image right now.-->
-                    <img class="infoImage" alt="Bar/Pub of the week Image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
+                    <img class="infoImage" alt="Bar/Pub of the week Image" src=""/>
                 </div>
                 <!--The second column inside the first row-->
                 <div class="col-md-4 infoText">
                     <!--Contains information about the bar/pub of the
                             week, placeholder text right now.-->
-                    <p> Test</p>
+                    <p> The Bobbin </p>
                 </div>
             </div>
         </div>
         <!--The second row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-2">
+        <div class=" infoBox col-md-5 col-lg-offset-1">
             <!--The header for this field-->
             <h4>Drink of the week</h4>
             <div class="row">
@@ -56,13 +56,13 @@
                 <div class="col-md-6 infoPicture">   
                     <!--Contains an image displaying our drink of the
                             week, placeholder image right now.-->
-                    <img class="infoImage" alt="Drink of the week image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
+                    <img class="infoImage" alt="Drink of the week image" src="../img/Drinks2/1.jpg"/>
                 </div>
                 <!--The second column inside the second row-->
                 <div class="col-md-4 infoText">
                     <!--Contains information about the drink of the
                             week, placeholder text right now.-->
-                    <p> Test</p>
+                    <p> Jagerbomb</p>
                 </div>                    
             </div>
         </div>
@@ -70,7 +70,7 @@
     <!--The second 2x2 container -->
     <div class="row infoContainer">
         <!--The first row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-1"> 
+        <div class=" infoBox col-md-6"> 
             <!--The header for this field-->
             <h4>Recommended Bar/Pub</h4>
             <div class="row">
@@ -84,12 +84,12 @@
                 <div class="col-md-4 infoText">
                     <!--Contains information about our recommended
                     bar/pub, placeholder text right now.-->
-                    <p> Test</p>
+                    <p> Slain's Castle</p>
                 </div>
             </div>
         </div>
         <!--The second row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-2">
+        <div class=" infoBox col-md-6">
             <!--The header for this field-->
             <h4> Recommended Drink</h4>
             <div class="row">
@@ -103,7 +103,7 @@
                 <div class="col-md-4 infoText">
                     <!--Contains information about our recommended
                     drink, placeholder text right now.-->
-                    <p> Test</p>
+                    <p> Tennent's</p>
                 </div>
             </div>
         </div>
