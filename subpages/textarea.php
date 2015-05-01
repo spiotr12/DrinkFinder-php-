@@ -13,18 +13,21 @@ do {
 
 		<!--making rows and columns which will be responsive to window size-->
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-md-6">
 				<h3 class="place-name"><?php echo $resultArray['place_name']; ?></h3>          
-				<p class="place-type">Type: <?php echo $resultArray['type']; ?></p>
-				<div id="placeImage"><img src="img/places/<?php echo $resultArray['place_id']; ?>.jpg" alt="Image for <?php echo $resultArray['place_name']; ?>"/></div>
+				<br>
+				<div id="placeImage">
+					<img src="img/places/<?php echo $resultArray['place_id']; ?>.jpg" alt="Image for <?php echo $resultArray['place_name']; ?>"/>
+				</div>
 				<!--inserted image above--> 
 				<!--description of bar-->
-				<p class="place-description"><?php echo $resultArray['description']; ?></p>
+				<br>
+				<p class="place-description yellow-text"><?php echo $resultArray['description']; ?></p>
 			</div>
 			<!--An interactive menu which will depend on the database-->
-			<div class="col-lg-4 col-lg-offset-2 place-drinklist">
+			<div class="col-md-5 col-md-offset-1 place-drinklist">
 				<h3>Menu</h3>
-				<ul class="list-group">
+				<ul class="list-group table-colour">
 					<?php
 					$menuQuery = "SELECT * "
 							. "FROM serve "
@@ -43,7 +46,7 @@ do {
 						$drinkResult = mysqli_query($db_con, $drinkQuery);
 						$drinkArray = mysqli_fetch_array($drinkResult);
 
-						echo "<li class='list-group-item'><a href='drinker.php?link=drink&id=" . $drinkId . "'>" . $drinkArray['drink_name'] . "</a></li>";
+						echo "<li class='list-group-item  table-colour'><a href='drinker.php?link=drink&id=" . $drinkId . "'>" . $drinkArray['drink_name'] . "</a></li>";
 					} while ($menuArray = mysqli_fetch_array($menuResult));
 					?>
 				</ul>
@@ -52,68 +55,71 @@ do {
 
 		<div class="row">
 			<!--reviews will be from people submitting one to the database and then appear on the page-->
-			<div class="col-lg-6" >
-				<h3>Reviews</h3>
-				<p>Input your review</p>
-				<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post">
-					Review: <input type="text" name="review">
-					User names: <input type="text" name="userName">
-					<input type="number" min="0" max="10" step="2" value="5" name="rating"/>
-					<input type="submit" name="submit">
+			<div class="col-md-6" >
+				<h3>Feedback</h3>
+				<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="yellow-text">
+					<div class="row">
+						<div class="form-group col-md-8">
+							<label>User name:</label> 
+							<input type="text" name="userName" required class="form-control black-text">
+						</div>
+						<div class="form-group col-md-4">
+							<label>Rating</label> 
+							<select class="form-control" name="type">
+								<option value="5">5</option>
+								<option value="4">4</option>
+								<option value="3">3</option>
+								<option value="2">2</option>
+								<option value="1">1</option>
+								<option value="0">0</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Feedback:</label> 
+						<textarea type="text" name="review" required rows="5" class="form-control black-text"></textarea>
+					</div>
+					<button class="btn btn-bg black-text" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Submit</button>
 				</form>
-
-				<?php
-				if (isset($_POST['submit'])) {
-//					mysql_select_db("u500179497_df", $db_con);
-					$textReview = $_POST['review']; 
-					$
-					$date = date('Y-m-d');
-					echo $textReview;
-					$sql = "INSERT INTO review (userName, rate, review, date) "
-							. "VALUES ('$textReview')";
-					// values userName, rate, date
-					mysqli_query($db_con, $sql);
-//					$resultArray = mysqli_fetch_array($result);
-//					do{
-//						
-//					} while ($resultArray = mysqli_fetch_array($result));
-					
-//					my_sql_close($con);
-				}
-				?>
 			</div>
 
-			<div class="col-lg-4 col-lg-offset-2">
-				<h3>Rating</h3>
+			<div class="col-md-5 col-md-offset-1 yellow-text">
+				<h3>User's reviews</h3>
 				<div>
 					<!--rating's plugin-->
-					<p>Rating from some sort of database</p>
-					<p>Rating ****</p>
-					<form class="form-in-nav pull-left" role="form" name="search" action="<?php $_SERVER['PHP_SELF']; ?>" method="get">
-						
-					</form>
-					<!--rating scale in here use JQuery with css-->
-
-					<!--php for rating-->
+					<!--php for rating-->       
 					<?php
-					if (isset($_POST['submit_rating'])) {
-						mysql_select_db("u500179497_df", $db_con);
-						$sql = "INSERT INTO rate () VALUES ('$_POST[rating]')";
+					$ratingQuery = "SELECT * "
+							. "FROM place_rate ";
 
-						mysql_query($sql, $db_con);
-						my_sql_close($con);
+					$ratingResult = mysqli_query($db_con, $ratingQuery);
+
+					$row = mysqli_fetch_array($ratingResult);
+
+					while ($row = mysqli_fetch_array($ratingResult)) {
+						?>
+						<div class="user-comment">
+							<h3><?php echo $row['userName']; ?></h3>
+							<div class="">
+								 <p class="yellow-text"><?php echo $row['review']; ?></p>
+							</div>
+								<div class="row">
+									<p class="col-md-6 yellow-text">Date: <?php echo $row['date']; ?></p>
+									<p class="col-md-3 col-md-offset-3 yellow-text">Rate:&nbsp;&nbsp;<?php echo $row['rate']; ?></p>
+								</div>
+						</div>
+						<?php
 					}
 					?>
-
 
 				</div>
 			</div>
 		</div>
 
 		<div class ="row">
-			<div class="col-lg-6" >
+			<div class="col-md-6" >
 				<!-- this will show the location of the bar on google images-->
-				<h3>Map</h3>
+				<h3>Maps</h3>
 				<!--google maps-->
 				<?php echo $resultArray['google_map']; ?>
 			</div>

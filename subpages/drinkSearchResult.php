@@ -27,15 +27,15 @@ $resultArray = mysqli_fetch_array($result);
 			<!--TYPE OF DRINK-->
 			<div id="tableFilter" class="col-md-12 col-md-offset-2">
 				<p class="label label-warning">Select a type of drink</p>
-				<ul id="typelist" class="list-group list-inline serch-result-list">
-					<li class="list-group-item col-md-1"><input id="beer" type="checkbox" name="type" value="beer"> Beer</li>
-					<li class="list-group-item col-md-1"><input id="lager" type="checkbox" name="type" value="lager"> Lager</li>
-					<li class="list-group-item col-md-1"><input id="ale" type="checkbox" name="type" value="ale"> Ale</li>
-					<li class="list-group-item col-md-1"><input id="spirit" type="checkbox" name="type" value="spirit"> Spirit</li>
-					<li class="list-group-item col-md-1"><input id="cocktail" type="checkbox" name="type" value="cocktail"> Cocktail</li>
-					<li class="list-group-item col-md-1"><input id="cider" type="checkbox" name="type" value="cider"> Cider</li>
-					<li class="list-group-item col-md-1"><input id="wine" type="checkbox" name="type" value="wine"> Wine</li>
-					<li class="list-group-item col-md-1"><input id="whiskey" type="checkbox" name="type" value="whiskey"> Whiskey</li>
+				<ul id="typelist" class="list-group yellow-text list-inline search-result-list">
+					<li class="list-group-item col-md-1 table-colour"><input id="beer" type="checkbox" name="type" value="beer"> Beer</li>
+					<li class="list-group-item col-md-1 table-colour "><input id="lager" type="checkbox" name="type" value="lager"> Lager</li>
+					<li class="list-group-item col-md-1 table-colour"><input id="ale" type="checkbox" name="type" value="ale"> Ale</li>
+					<li class="list-group-item col-md-1 table-colour "><input id="spirit" type="checkbox" name="type" value="spirit"> Spirit</li>
+					<li class="list-group-item col-md-1 table-colour"><input id="cocktail" type="checkbox" name="type" value="cocktail"> Cocktail</li>
+					<li class="list-group-item col-md-1 table-colour"><input id="cider" type="checkbox" name="type" value="cider"> Cider</li>
+					<li class="list-group-item col-md-1 table-colour"><input id="wine" type="checkbox" name="type" value="wine"> Wine</li>
+					<li class="list-group-item col-md-1 table-colour"><input id="whiskey" type="checkbox" name="type" value="whiskey"> Whiskey</li>
 				</ul>
 			</div>
 		</div>
@@ -44,12 +44,8 @@ $resultArray = mysqli_fetch_array($result);
 		<div class="row">
 			<!--show results-->
 			<div class="col-md-10 col-md-offset-1 query-result">
-				<table id="sorttable" class="table place-table tablesorter search-result-table">
+				<table id="sorttable" class="table place-table tablesorter search-result-table table-drink-inpub">
 					<thead>
-						<!--ignore validation error-->
-	<!--				<th class="result-icon">
-						Icon
-					</th>-->
 					<th class="result-name">
 						Name
 					</th>
@@ -67,12 +63,12 @@ $resultArray = mysqli_fetch_array($result);
 						<!--SAMPLE DATA-->
 						<?php
 						do {
+							$id = $resultArray['drink_id'];
 							echo "<tr>";
-//						echo "	<td class = 'result-icon'>" . $resultArray['drink_name'] . "</td>";
-							echo "	<td class='name' value='" . $resultArray['drink_name'] . "'><a href='drinker.php?link=drink&id=" . $resultArray['drink_id'] . "'>" . $resultArray['drink_name'] . "</a></td>";
+							echo "	<td class='name' value='" . $resultArray['drink_name'] . "'><a href='drinker.php?link=drink&id=" . $id . "'>" . $resultArray['drink_name'] . "</a></td>";
 							echo "	<td class='type' value='" . $resultArray['type'] . "'>" . $resultArray['type'] . "</td>";
 							echo "	<td class='percent'>" . $resultArray['percent'] . "</td>";
-							echo "	<td class='rate'>" . $resultArray['average_rate'] . "</td>";
+							echo "	<td class='rate'>" . getAverageRaring("drink", $id) . "</td>";
 							echo "</tr>";
 						} while ($resultArray = mysqli_fetch_array($result));
 						mysqli_close($db_con);

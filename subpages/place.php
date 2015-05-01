@@ -15,7 +15,7 @@ do {
         <div class="row">
             <div class="col-lg-6">
                 <h3 class="place-name"><?php echo $resultArray['place_name']; ?></h3>          
-                <p class="place-type">Type: <?php echo $resultArray['type']; ?></p>
+                <p2 class="place-type">Type: <?php echo $resultArray['type']; ?></p2>
                 <div id="placeImage"><img src="img/places/<?php echo 	$resultArray['place_id'];?>.jpg" alt="Image for <?php echo $resultArray['place_name'];?>"/></div>
                 <!--inserted image above--> 
                 <!--description of bar-->
@@ -53,18 +53,18 @@ do {
         <div class="row">
             <!--reviews will be from people submitting one to the database and then appear on the page-->
             <div class="col-lg-6" >
-                <h3>Reviews</h3>
+                <h3>Review</h3>
                 <p>This is a written review example which will be</p> 
                 <p>implemented with the database.</p>
                 <p>"I thought underground has a nice atmosphere but it gets too crowded."</p>
             </div>
 
             <div class="col-lg-4 col-lg-offset-2">
-                <h3>Rating</h3>
+                <h3>Review</h3>
                 <div>
                     <!--rating's plugin-->
-                    <p>Rating from some sort of database</p>
-                    <p>Rating ****</p>
+                    <p2>Rating from some sort of database</p2>
+                    <p2>Rating ****</p2>
                     <!--rating scale in here use JQuery with css-->
 
                 </div>

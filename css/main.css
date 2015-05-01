@@ -1,261 +1,287 @@
 /* ==========================================================================
-   Default styles
+   General CSS
    ========================================================================== */
+/*Affects the body of every web page, padding's are set by Bootstrap'*/
 body {
-	padding-top: 50px;
-	padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #373636;
 }
 
+/*Set the Colour of all p tags*/
+p{
+    color: black;
+}
+
+/*Set the Colour of all p2,p3,h1,h2,h3,h6 tags and links to yellow*/
+p2, p3, h, h1, h2, h3, h6, a{
+    color:#ffc702;
+}
+
+/*Set the colour of all links when hovered over to orange*/
+a:hover {
+    color: #b65d00;
+}
+
+/*Set any other required text of the yellow-text class to yellow*/
+.yellow-text {
+    color:#ffc702;
+}
+
+/*Set any other required text of the black-text class to black*/
+.black-text{
+    color: black;
+}
+
+/*Sets the Search Icon's colour for the Beer/Location buttons for the search bars*/
+.btn-bg{
+    background-image: url('../img/beer_bg.jpg');
+}
+
+/*Sets the Search Icon's colour lighter when you hover over the Beer/Location buttons for the search bars*/
+.btn-bg:hover{
+    background-image: url('../img/beer_bg_h.jpg');
+}
+/* ==========================================================================
+     Search-Table CSS
+   ========================================================================== */
+/*Set the colour of the results in search table to yellow*/
+.search-result-table{
+    color:#ffc930;
+}
+
+/*Set the headings of the columns in the search table to white*/
+.search-result-table th{
+    color:white;
+}
+
+/*Change the colour of the background of the search table to a dark grey*/
+.table-colour{
+    background:#222222;
+}
+
+table.tablesorter thead tr .header {
+    background-image: url(../img/bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+
+table.tablesorter thead tr .headerSortUp {
+    background-image: url(../img/desc.gif);
+}
+
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(../img/asc.gif);
+}
+
+.red-backgroud{
+    background-color: red;
+}
+
+.table-drink-inpub{
+	border: 1px solid white;
+	color: #ffc702;
+	background: #222222;
+}
+
+.table-drink-inpub th{
+	color: white;
+}
 /* ==========================================================================
    Piotr's custom styles
    ========================================================================== */
+
 .fullscreen{
-	min-height: 100vh;
+    min-height: 100vh;
 }
 
 #price-max{
-	margin-top: -10px;
+    margin-top: -10px;
 }
 
 .search-submit{
-	width: 100%;
+    width: 100%;
 }
 
 .footer{
-	clear: both;
-	margin-top: 40px;
+    clear: both;
+    margin-top: 40px;
 }
 
 .form-in-nav{
-	clear: none;
+    clear: none;
 }
 
 .place-name{
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .place-type{
-	color: #737373;
-	font-size: medium;
+    color: #737373;
+    font-size: medium;
 }
 
 .display-inline{
-	display: inline;
+    display: inline;
 }
+
 
 .continue-form{
     min-height: 1px;
 }
+
+/*Change layout descriptions of the drinks*/
+.drink-description{
+	margin-top: 20px;
+	text-align: justify;
+}
+
+.user-comment{
+	background: #222222;
+	border-radius: 10px;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 15px;
+}
+
+.user-comment h3{
+	margin-top: 5px;
+	color: #ec971f;
+}
+
 /* ==========================================================================
-   Konrad's custom styles
+     Drinker.php CSS
    ========================================================================== */
-/*setting up piture like colors for buttons*/
-.weed{
-    /*background-color: #ffba01;*/
-    background-image: url('../img/beer_bg.jpg');
-}
-
-.weed:hover{
-    /*background-color: #8AC007;*/
-    background-image: url('../img/beer_bg_h.jpg');
-}
-
-/*
-* Footer
-*/
-
-/*customing a footer*/
-.customfooter{
-    margin-bottom: -20px;
-    margin-top: -20px;
-}
-
-/*setting up color of footer*/
-.giveColor{
-    background-color: #222;
-
-}
-/*setting up text in footer*/
-.center-this{
-    text-align: center;
-    color:#E0E0E0;
-}
-/*setting up color in dropbox*/
-.dropdowncolor{
-    background-color:#222;
-}
-
+/*Nav-bar CSS does..??*/
 .extend{
-	overflow: hidden;
+    overflow: hidden;
+}
+/* ==========================================================================
+     Footer CSS
+   ========================================================================== */
+
+/*Applies top and bottom margins to the footer*/
+.drinkFooter{
+    margin-bottom: -20px;
+    margin-top: 50px;
+    background-color: #222222;
+}
+
+/*Changes the colour of the footer text and aligns it to center*/
+.footerText{
+    text-align: center;
+    color:#ffc702;
 }
 
 /* ==========================================================================
-   Table sorting
-   ========================================================================== */
-table.tablesorter {
-
-}
-table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-
-}
-table.tablesorter thead tr .header {
-	background-image: url(../img/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	cursor: pointer;
-}
-table.tablesorter tbody td {
-
-}
-table.tablesorter tbody tr.odd td {
-
-}
-table.tablesorter thead tr .headerSortUp {
-	background-image: url(../img/desc.gif);
-}
-table.tablesorter thead tr .headerSortDown {
-	background-image: url(../img/asc.gif);
-}
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-
-}
-
-.red-backgroud{
-	background-color: red;
-}
-
-/* ==========================================================================
-   Christopher's custom styles
+   Home.php CSS
    ========================================================================== */
 
-/*CSS which affects the search bar on the home page*/
+/*Gives the large search bar a margin below it*/
 #MainSearchBar{
-    /*Creates space below the search bar*/
     margin-bottom: 100px;
 }
 
-/*CSS which affects the container promotionBox on the home page*/ 
+/*Gives the large container a border and sets colour to dark grey*/ 
 .promotionBox{
-    /*Creates a solid black border around the promotion box 1px in size*/
     border: 1px solid black;
-    /*Sets the background colour to be grey*/
-    background-color: #666666;
+    background-color: #222222;
 }
 
-/*CSS which affects the 4 infoBox's on the home page'*/
+/*Creates a box inside the promotion Container, for the recommended drinks/bars*/
 .infoBox{
-    /*Creates a solid black border around the info box 1px in size*/
     border: 1px solid black;
-    /*Sets the background colour to be a light yellow*/
-    background-color: lightgoldenrodyellow
+    background-color: white;
 }
 
-/*CSS which affects both of the infoContainer's wrapped around the infoBox's
-    on the home page*/
+/*Separates the recommended drinks/bars creating a margin between the rows */
 .infoContainer{
-    /*Creates a margin around the infoContainer*/
     margin: 75px;
 }
 
-/*CSS which affects the slide-image's on the carousel on the home page*/
+/*Sets the carousel's slide images to a max width of 800px'*/
 .slide-image{
-    /*Sets the slide images to have a width of 800px*/
     width: 800px;
 }
 
-/*CSS which affects the infoImage's stored inside the infoBox's on the home
-    page*/
+/*Creates a margin around the infoImage pictures of recommended drinks/bars*/
 .infoImage{
-    /*Creates a small 10px margin around the images in the infoBox's*/
     margin: 10px;
 }
+/*==========================================================================
+   Index.php CSS
+   ========================================================================== */
 
-/*CSS which affects the image displayed on the welcome page */
+/*Assigns a margin to the Age verification splash image */
 .WelcomeImage{
-    /*Creates a margin of 100px around the image*/
-    margin-top: 100px;    
+    margin-top: 50px;    
 }
 
-/*CSS which affects the welcome text on the welcome page*/
-#welcomeMessage{
-    /*Creates a small amount of padding around the text in order to stop
-        it bumping into the welcomeImage*/
-    padding: 2cm;        
+/*Roughly centers the welcomeMessage field*/
+#WelcomeMessage{
+    padding-top: 100px;
+    display:display-inline;
 }
 
-/*CSS which affects the body of all of the web pages, auto genereated by
-    bootstrap*/
-body {
-    /*Creates a small amount of padding at the top of the body, to seperate
-        it from the header*/
-    padding-top: 50px;
-    /*Creates a small amount of padding at the bottom of the body, to seperate
-        it from the footer*/
-    padding-bottom: 20px;
+/*Positions the facebook/google log in buttons*/
+.loginButton{
+    padding-left: 20px;
 }
 
-/*CSS which affects how the buttons look on the welcome page*/
-.button {
-	/*Creates a solid 3px border coloured a dark blue*/
-	border: 3px solid #0a3c59;
-	/*Sets the background colour of the button to a lighter blue*/
-	background: #3e779d;
-	/*Gives the background colour a gradient colour between #65a9d7 and #3e779d
-		 which is compatible with chrome and safari */
-	background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
-	/*Gives the background colour a linear gradient colour between #65a9d7 and
-	 #3e779d which is compatible with chrome and safari */
-	background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
-	/*Gives the background colour a linear gradient colour between #65a9d7 and
-	 #3e779d which is compatible with firefox */
-	background: -moz-linear-gradient(top, #65a9d7, #3e779d);
-	padding: 5px 10px;
-	/*Gives the buttons a curved corner of radius 29px, which is compatible with
-	  chrome and safari*/
-	-webkit-border-radius: 29px;
-	/*Gives the buttons a curved corner of radius 29px, which is compatible with
-	  firefox*/
-	-moz-border-radius: 29px;
-	/*Gives the buttons a curved corner of radius 29px*/
-	border-radius: 29px;
-	/*Sets the colour of the text to be black*/
-	color: #000000;
-	/*Sets the size of the font to be 17px*/
-	font-size: 14px;
-	/*Sets the font of the button to be sans-serif*/
-	font-family: sans-serif;
-	/*Sets the button to be in the middle of its parent element*/
-	vertical-align: middle;
-	/*Creates a 5px margin to the right of the button*/
-	margin-right: 5px;
-	/*Creates a 35px margin to the left of the button*/
-	margin-left: 35px;
-	/*Makes the button invisible on page load*/
-	display:none;
+/*Hides the allowAccess div, it will never be seen shhhh*/
+#allowAccess{
+    display:none;
 }
 
-/*CSS which affects what happens when the buttons are hovered over on the
-    welcome page*/
-.button:hover {
-	/*Set's the colour of the text to white when the button is hovered over'*/
-	color: #fff;
+/*Sets the appearance of the submit button*/
+#submit {
+    border: 3px solid #0a3c59;
+    background: #3e779d;
+    /*Gives the background colour a gradient colour between #65a9d7 and #3e779d
+             which is compatible with chrome and safari */
+    background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+    /*Gives the background colour a linear gradient colour between #65a9d7 and
+     #3e779d which is compatible with chrome and safari */
+    background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+    /*Gives the background colour a linear gradient colour between #65a9d7 and
+     #3e779d which is compatible with firefox */
+    background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+    padding: 5px 10px;
+    /*Gives the buttons a curved corner of radius 29px, which is compatible with
+      chrome and safari*/
+    -webkit-border-radius: 29px;
+    /*Gives the buttons a curved corner of radius 29px, which is compatible with
+      firefox*/
+    -moz-border-radius: 29px;
+    border-radius: 29px;
+    color: #000000;
+    font-size: 14px;
+    font-family: sans-serif;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-left: 35px;
+    display:none;
 }
+
+/*Sets the appearance of the submit button when it is hovered over*/
+#submit:hover {
+    color: #fff;
+}
+
+/*Hides the datepicker input field until it is needed*/
 #datePicker{
     display: none;
 }
 
+/*Hides the continue button until it is needed*/
 #continue{
     display:none;
 }
 /* ==========================================================================
-   Josh's custom styles
+   Drink.PHP CSS
    ======================S=================================================== */
-/*.drink-image{
-	max-width: 100px;
-	max-height: 100px;
-	border: 5px solid red;
-}  */
 .drink-image{
-	max-width: 700px;
+    max-width: 700px;
 }
-/*#drinkImage { height: 400px; width: 350; overflow: hidden; }*/

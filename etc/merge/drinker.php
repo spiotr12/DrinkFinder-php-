@@ -105,31 +105,6 @@ if ($isEighteen == 1) {
 										</span>
 									</div>
 								</form>
-								<!--							&nbsp; space between buttons
-															 /input-group 
-															<div class="btn-group input-group dropdown">
-																<button class="btn weed" type="button" ><span class="glyphicon glyphicon-user"></span></button>
-																<button class="btn weed dropdown-toggle" data-toggle="dropdown">
-								
-																	<span class="caret"></span>
-																	<span class="sr-only">Toggle Dropdown</span>
-																</button>
-																<div class="dropdown-menu dropdowncolor" onclick="username(event)" >
-								
-																	<form style="margin: 0px" accept-charset="UTF-8" action="/sessions" method="post"> 
-																		<div style="margin:0;padding:0;display:inline">
-																			<input name="utf8" type="hidden" value="&#x2713;" />
-																			<input name="authenticity_token" type="hidden" value="4L/A2ZMYkhTD3IiNDMTuB/fhPRvyCNGEsaZocUUpw40=" />
-																		</div>
-																		 Boxes for login and password in drop down menu
-																		<fieldset class='textbox' style="padding:10px">
-																			<input id = "username" style="margin-top: 8px" type="text" placeholder="Username"/>
-																			<input style="margin-top: 8px" type="password" placeholder="Passsword" />
-																			<input class="btn weed btn-sm center-block" name="commit" type="submit" value="Log In" style="margin-top: 7px;" />
-																		</fieldset>
-																	</form>
-																</div>
-															</div> -->
 							</div>
 						</div><!-- /.row -->
 					</div><!-- /.row -->
