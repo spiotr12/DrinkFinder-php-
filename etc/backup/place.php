@@ -8,6 +8,7 @@ $result = mysqli_query($db_con, $query);
 $resultArray = mysqli_fetch_array($result);
 do {
 	?>
+	<title><?php echo $resultArray['place_name']; ?></title>
 	<div class="container" >
 		<!--Place for individual code-->
 
@@ -27,6 +28,47 @@ do {
 			<!--An interactive menu which will depend on the database-->
 			<div class="col-md-5 col-md-offset-1 place-drinklist">
 				<h3>Menu</h3>
+				<div class="row">
+					<!--The list of bars which sell the drink-->
+					<table id="sorttable" class="table tablesorter table-drink-inpub">
+						<thead>
+						<th class="result-name">
+							Name
+						</th>
+						<th class="result-type">
+							Price
+						</th>
+						</thead>
+						<?php
+						$listQuery = "SELECT * "
+								. "FROM serve "
+								. "WHERE place_id = $id";
+
+						$listResult = mysqli_query($db_con, $listQuery);
+
+						$listArray = mysqli_fetch_array($listResult);
+						do {
+							$drinkId = $listArray['drink_id'];
+							$placeQuery = "SELECT drink_id, drink_name FROM drink WHERE drink_id = $drinkId";
+							$placeResult = mysqli_query($db_con, $placeQuery);
+							$placeArray = mysqli_fetch_array($placeResult);
+							$price = $listArray['price'];
+							?>
+							<tr>
+								<td>
+									<a href="drinker.php?link=place&id=<?php echo $drinkId; ?>">
+										<?php echo $placeArray['drink_name']; ?>
+									</a>
+								</td>
+								<td>
+									<?php echo "£" . $price; ?>
+								</td>
+							</tr>
+							<?php
+						} while ($listArray = mysqli_fetch_array($listResult));
+						?>
+					</table>
+				</div>
 				<ul class="list-group table-colour">
 					<?php
 					$menuQuery = "SELECT * "
@@ -89,24 +131,24 @@ do {
 					<!--rating's plugin-->
 					<!--php for rating-->       
 					<?php
+					// print comments
 					$ratingQuery = "SELECT * "
 							. "FROM place_rate ";
 
 					$ratingResult = mysqli_query($db_con, $ratingQuery);
 
 					$row = mysqli_fetch_array($ratingResult);
-
 					while ($row = mysqli_fetch_array($ratingResult)) {
 						?>
 						<div class="user-comment">
 							<h3><?php echo $row['userName']; ?></h3>
 							<div class="">
-								 <p class="yellow-text"><?php echo $row['review']; ?></p>
+								<p class="yellow-text"><?php echo $row['review']; ?></p>
 							</div>
-								<div class="row">
-									<p class="col-md-6 yellow-text">Date: <?php echo $row['date']; ?></p>
-									<p class="col-md-3 col-md-offset-3 yellow-text">Rate:&nbsp;&nbsp;<?php echo $row['rate']; ?></p>
-								</div>
+							<div class="row">
+								<p class="col-md-6 yellow-text">Date: <?php echo $row['date']; ?></p>
+								<p class="col-md-3 col-md-offset-3 yellow-text">Rate:&nbsp;&nbsp;<?php echo $row['rate']; ?></p>
+							</div>
 						</div>
 						<?php
 					}

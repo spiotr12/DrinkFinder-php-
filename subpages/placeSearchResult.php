@@ -4,7 +4,9 @@ Using php, appropriate table will display depending what user is looking for-->
 <?php
 $searchTerm = $_GET['searchFor'];
 
-$query = "SELECT * FROM place WHERE UPPER(place_name) LIKE UPPER('%$searchTerm%')";
+$query = "SELECT * FROM place WHERE UPPER(place_name) LIKE UPPER('%$searchTerm%')"
+		. "OR UPPER(type) LIKE UPPER('%$searchTerm%')"
+		. "OR UPPER(post_code) LIKE UPPER('%$searchTerm%')";
 
 $result = mysqli_query($db_con, $query);
 
@@ -37,18 +39,23 @@ $resultArray = mysqli_fetch_array($result);
 						Rate
 					</th>
 					</thead>
-					<tbody>
+					<tbody> 
 						<?php
-						do {
-							$id = $resultArray['place_id'];
+						if (mysqli_num_rows($result) > 0) {
+							do {
+								$id = $resultArray['place_id'];
+								echo "<tr>";
+								echo "	<td class='result-name'><a href='drinker.php?link=place&id=" . $id . "'>" . $resultArray['place_name'] . "</a></td>";
+								echo "	<td class='result-type'>" . $resultArray['type'] . "</td>";
+								echo "	<td class='result-postcode'>" . $resultArray['post_code'] . "</td>";
+								echo "	<td class='result-rate'>" . getAverageRaring("place", $id) . "</td>";
+								echo "</tr>";
+							} while ($resultArray = mysqli_fetch_array($result));
+						} else {
 							echo "<tr>";
-							echo "	<td class = 'result-name'><a href='drinker.php?link=place&id=" . $id . "'>" . $resultArray['place_name'] . "</a></td>";
-							echo "	<td class = 'result-type'>" . $resultArray['type'] . "</td>";
-							echo "	<td class = 'result-postcode'>" . $resultArray['post_code'] . "</td>";
-							echo "	<td class = 'result-rate'>" . getAverageRaring("drink", $id) . "</td>";
+							echo "<td class='result-name'  colspan='0''>No result found for \"" . $searchTerm . "\"...</td>";
 							echo "</tr>";
-						} while ($resultArray = mysqli_fetch_array($result));
-
+						}
 
 						mysqli_close($db_con);
 						?>

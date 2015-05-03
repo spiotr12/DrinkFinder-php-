@@ -6,6 +6,7 @@ $result = mysqli_query($db_con, $query);
 $resultArray = mysqli_fetch_array($result);
 do {
 	?>
+	<title><?php echo $resultArray['drink_name']; ?></title>
 	<!--A container which contains all the information about the drink-->
 	<div class="container">
 		<!--A row which contains 2 columns-->

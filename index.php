@@ -1,6 +1,11 @@
 <?php
+// destroy session
 if (session_status() == PHP_SESSION_ACTIVE) {
-    session_destroy();
+	if (ini_get("session.use_cookies")) {
+		$params = session_get_cookie_params();
+		setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"], $params["secure"], $params["httponly"]);
+	}
+	session_destroy();
 }
 session_start();
 
@@ -8,19 +13,19 @@ include './etc/db_access.php';
 
 // Create connection
 $db_con = mysqli_connect($db_host, $db_username, $db_password, $db_dbname)
-        or die("Unable to connect to MySQL");
+		or die("Unable to connect to MySQL");
 
 // Check connection
 if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
 // sets the link
 $subpage;
 if (isset($_GET["link"]) && !empty($_GET["link"])) {
-    $subpage = $_GET["link"];
+	$subpage = $_GET["link"];
 } else {
-    $subpage = "home";
+	$subpage = "home";
 }
 
 /* TODO:
@@ -37,7 +42,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
-        <title>Drinker</title>
+        <title>Drink Finder</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!--validator error-->        
         <meta name="description" content="">
@@ -136,7 +141,7 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
                         submit button to enter the input-->
                     <div id="allowAccess" class="login">
                         <label for="datePicker" class="yellow-text">Date of Birth:</label>
-                        <input id="datePicker" type="text" tabindex="4" text="Please Select a Date"/>
+                        <input id="datePicker" tabindex="4"/>
                         <a href='#' id="submit" tabindex="5">Submit</a> 
                     </div>
                     <!--A div containing the continue button which will forward the user
@@ -182,15 +187,14 @@ if (isset($_GET["link"]) && !empty($_GET["link"])) {
             </div>
         </section>        
         <script type="text/javascript">
-            /*Facebook login cannot access the facebookLoginCallBack() method from the
-             * external javascript file. Instead this acts as a stepping stone, the
-             * login button calls this method, and this method calls the 
-             * facebookLoginCallBack() method. */
-            function doStuff() {
-                facebookLoginCallBack();
-            }
+			/*Facebook login cannot access the facebookLoginCallBack() method from the
+			 * external javascript file. Instead this acts as a stepping stone, the
+			 * login button calls this method, and this method calls the 
+			 * facebookLoginCallBack() method. */
+			function doStuff() {
+				facebookLoginCallBack();
+			}
         </script>                
     </body>
 </html>
-<?php
-?>
+<?php ?>

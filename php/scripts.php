@@ -29,4 +29,14 @@ function getAverageRaring($what, $id) {
 	return number_format(($rateSum / $count), 1);
 }
 
+function getPromotedDataArray($what, $id) {
+	include 'etc/db_access.php';
+	// Create connection
+	$db_con = mysqli_connect($db_host, $db_username, $db_password, $db_dbname)
+			or die("Unable to connect to MySQL");
+	$query = "SELECT * FROM $what WHERE " . $what . "_id = $id";
+	$result = mysqli_query($db_con, $query);
+	return mysqli_fetch_array($result);
+}
+
 ?>

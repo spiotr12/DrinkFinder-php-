@@ -1,3 +1,9 @@
+<?php
+// pick recomended and off the week place and drink
+//0 - week place, 1 - week drink, 2 - rec place, 3 - rec drink
+$pickHomeItems = [2, 5, 3, 7];
+?>
+<title>Drink Finder - Home</title>
 <!--The container for the search bar placed along the middle of this page-->
 <div class="container" id="MainSearchBar">
     <!--The row inside the container which will hold the search bar-->
@@ -15,8 +21,12 @@
                 <span class="input-group-btn">
                     <!--The magnifying glass icon as a button, interactivity to
                             be added later-->
-                    <button class="btn btn-bg" type="submit" name="searchType" value="drink"><img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/></button>
-                    <button class="btn btn-bg" type="submit" name="searchType" value="place"><img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/></button>
+                    <button class="btn btn-bg" type="submit" name="searchType" value="drink">
+						<img class="img-responsive" src="img/glyphicons-275-beer.png" alt="Search for drink"/>
+					</button>
+                    <button class="btn btn-bg" type="submit" name="searchType" value="place">
+						<img class="img-responsive" src="img/glyphicons-243-google-maps.png" alt="Search for place"/>
+					</button>
                 </span>
             </div><!-- /input-group -->
         </form>
@@ -29,83 +39,107 @@
     <!--The first 2x2 container -->
     <div class="row infoContainer">
         <!--The first row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-1"> 
-            <!--The header for this field-->
-            <h4>Bar/Pub of the week</h4>
-            <div class="row">
-                <!--The first column inside the first row-->
-                <div class="col-md-6 infoPicture">    
-                    <!--Contains an image displaying our bar/pub of the
-                            week, placeholder image right now.-->
-                    <img class="infoImage" alt="Bar/Pub of the week Image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
-                </div>
-                <!--The second column inside the first row-->
-                <div class="col-md-4 infoText">
-                    <!--Contains information about the bar/pub of the
-                            week, placeholder text right now.-->
-                    <p>The Wig</p>
-                </div>
-            </div>
+        <div class="infoBox col-md-5"> 
+			<?php
+			$resultArray = getPromotedDataArray("place", $pickHomeItems[0]);
+			if ($resultArray !== false) {
+				?>
+				<!--The header for this field-->
+				<h2>Place of the week:</h2>
+				<h3 class="text-center">
+					<a href="drinker.php?link=place&id=<?php echo $resultArray['place_id']; ?>">
+						<?php echo $resultArray['place_name']; ?>
+					</a>
+				</h3>
+				<!--The first column inside the first row-->
+				<div class="col-md-12">    
+					<!--Contains an image displaying our bar/pub of the
+							week, placeholder image right now.-->
+					<a href="drinker.php?link=place&id=<?php echo $resultArray['place_id']; ?>">
+						<img class="img-responsive" src="img/places/<?php echo $resultArray['place_id']; ?>.jpg" alt="Image for <?php echo $resultArray['place_name']; ?>"/>
+					</a>
+				</div>
+				<?php
+			}
+			?>
         </div>
         <!--The second row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-2">
-            <!--The header for this field-->
-            <h4>Drink of the week</h4>
-            <div class="row">
-                <!--The first column inside the second row-->
-                <div class="col-md-6 infoPicture">   
-                    <!--Contains an image displaying our drink of the
-                            week, placeholder image right now.-->
-                    <img class="infoImage" alt="Drink of the week image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
-                </div>
-                <!--The second column inside the second row-->
-                <div class="col-md-4 infoText">
-                    <!--Contains information about the drink of the
-                            week, placeholder text right now.-->
-                    <p>Jagerbomb</p>
-                </div>                    
-            </div>
+        <div class=" infoBox col-md-5 col-md-offset-2">
+			<?php
+			$resultArray = getPromotedDataArray("drink", $pickHomeItems[1]);
+			if ($resultArray !== false) {
+				?>
+				<!--The header for this field-->
+				<h2>Drink of the week</h2>
+				<h3 class="text-center">
+					<a href="drinker.php?link=drink&id=<?php echo $resultArray['drink_id']; ?>">
+						<?php echo $resultArray['drink_name']; ?>
+					</a>
+				</h3>
+				<!--The first column inside the first row-->
+				<div class="col-xs-6 col-xs-offset-3">    
+					<!--Contains an image displaying our bar/pub of the
+							week, placeholder image right now.-->
+					<a href="drinker.php?link=drink&id=<?php echo $resultArray['drink_id']; ?>">
+						<img class="img-responsive" src="img/drinks/<?php echo $resultArray['drink_id']; ?>.jpg" alt="Image for <?php echo $resultArray['drink_name']; ?>"/>
+					</a>
+				</div>
+				<?php
+			}
+			?>
         </div>
     </div>
     <!--The second 2x2 container -->
     <div class="row infoContainer">
         <!--The first row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-1"> 
-            <!--The header for this field-->
-            <h4>Recommended Bar/Pub</h4>
-            <div class="row">
-                <!--The first column inside the first row-->
-                <div class="col-md-6 infoPicture">       
-                    <!--Contains an image displaying our recommended
-                    bar/pub, placeholder image right now.-->
-                    <img class="infoImage" alt="Recommended Bar/Pub Image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
-                </div>
-                <!--The second column inside the first row-->
-                <div class="col-md-4 infoText">
-                    <!--Contains information about our recommended
-                    bar/pub, placeholder text right now.-->
-                    <p>The Bobbin</p>
-                </div>
-            </div>
+		<div class="infoBox col-md-5"> 
+			<?php
+			$resultArray = getPromotedDataArray("place", $pickHomeItems[2]);
+			if ($resultArray !== false) {
+				?>
+				<!--The header for this field-->
+				<h2>Recommended place:</h2>
+				<h3 class="text-center">
+					<a href="drinker.php?link=place&id=<?php echo $resultArray['place_id']; ?>">
+						<?php echo $resultArray['place_name']; ?>
+					</a>
+				</h3>
+				<!--The first column inside the first row-->
+				<div class="col-md-12">    
+					<!--Contains an image displaying our bar/pub of the
+							week, placeholder image right now.-->
+					<a href="drinker.php?link=place&id=<?php echo $resultArray['place_id']; ?>">
+						<img class="img-responsive" src="img/places/<?php echo $resultArray['place_id']; ?>.jpg" alt="Image for <?php echo $resultArray['place_name']; ?>"/>
+					</a>
+				</div>
+				<?php
+			}
+			?>
         </div>
         <!--The second row inside the container-->
-        <div class=" infoBox col-md-4 col-md-offset-2">
-            <!--The header for this field-->
-            <h4> Recommended Drink</h4>
-            <div class="row">
-                <!--The first column inside the second row-->
-                <div class="col-md-6 infoPicture">     
-                    <!--Contains an image displaying our recommended
-                    drink, placeholder image right now.-->
-                    <img class="infoImage" alt="Recommended Drink Image" src="http://www.thegoodpubguide.co.uk/var/ezflow_site/storage/images/media/images/monteiths-lager/7615933-1-eng-GB/Monteiths-Lager_imagelarge.jpg"/>
-                </div>
-                <!--The second column inside the second row-->
-                <div class="col-md-4 infoText">
-                    <!--Contains information about our recommended
-                    drink, placeholder text right now.-->
-                    <p>Tennent's</p>
-                </div>
-            </div>
+        <div class=" infoBox col-md-5 col-md-offset-2">
+			<?php
+			$resultArray = getPromotedDataArray("drink", $pickHomeItems[3]);
+			if ($resultArray !== false) {
+				?>
+				<!--The header for this field-->
+				<h2>Recommended drink:</h2>
+				<h3 class="text-center">
+					<a href="drinker.php?link=drink&id=<?php echo $resultArray['drink_id']; ?>">
+						<?php echo $resultArray['drink_name']; ?>
+					</a>
+				</h3>
+				<!--The first column inside the first row-->
+				<div class="col-xs-6 col-xs-offset-3">    
+					<!--Contains an image displaying our bar/pub of the
+							week, placeholder image right now.-->
+					<a href="drinker.php?link=drink&id=<?php echo $resultArray['drink_id']; ?>">
+						<img class="img-responsive" src="img/drinks/<?php echo $resultArray['drink_id']; ?>.jpg" alt="Image for <?php echo $resultArray['drink_name']; ?>"/>
+					</a>
+				</div>
+				<?php
+			}
+			?>
         </div>
     </div>
 </div>

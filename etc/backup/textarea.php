@@ -20,52 +20,37 @@ do {
 				<div id="placeImage">
 					<img src="img/places/<?php echo $resultArray['place_id']; ?>.jpg" alt="Image for <?php echo $resultArray['place_name']; ?>"/>
 				</div>
+				<!--inserted image above--> 
+				<!--description of bar-->
 				<br>
 				<p class="place-description yellow-text"><?php echo $resultArray['description']; ?></p>
-				<h3>Average rate: <?php echo getAverageRaring("place", $id); ?></h3>
 			</div>
 			<!--An interactive menu which will depend on the database-->
 			<div class="col-md-5 col-md-offset-1 place-drinklist">
 				<h3>Menu</h3>
-				<!--The list of bars which sell the drink-->
-				<table id="sorttable" class="table tablesorter table-drink-inpub">
-					<thead>
-					<th class="result-name">
-						Name
-					</th>
-					<th class="result-type">
-						Price
-					</th>
-					</thead>
+				<ul class="list-group table-colour">
 					<?php
-					$listQuery = "SELECT * "
+					$menuQuery = "SELECT * "
 							. "FROM serve "
 							. "WHERE place_id = $id";
 
-					$listResult = mysqli_query($db_con, $listQuery);
+					$menuResult = mysqli_query($db_con, $menuQuery);
+//				if (!$check1_res) {
+//					printf("Error: %s\n", mysqli_error($db_con));
+//					exit();
+//				}
 
-					$listArray = mysqli_fetch_array($listResult);
+					$menuArray = mysqli_fetch_array($menuResult);
 					do {
-						$drinkId = $listArray['drink_id'];
-						$placeQuery = "SELECT drink_id, drink_name FROM drink WHERE drink_id = $drinkId";
-						$placeResult = mysqli_query($db_con, $placeQuery);
-						$placeArray = mysqli_fetch_array($placeResult);
-						$price = $listArray['price'];
-						?>
-						<tr>
-							<td>
-								<a href="drinker.php?link=drink&id=<?php echo $drinkId; ?>">
-									<?php echo $placeArray['drink_name']; ?>
-								</a>
-							</td>
-							<td>
-								<?php echo "£" . $price; ?>
-							</td>
-						</tr>
-						<?php
-					} while ($listArray = mysqli_fetch_array($listResult));
+						$drinkId = $menuArray['drink_id'];
+						$drinkQuery = "SELECT drink_id, drink_name FROM drink WHERE drink_id = $drinkId";
+						$drinkResult = mysqli_query($db_con, $drinkQuery);
+						$drinkArray = mysqli_fetch_array($drinkResult);
+
+						echo "<li class='list-group-item  table-colour'><a href='drinker.php?link=drink&id=" . $drinkId . "'>" . $drinkArray['drink_name'] . "</a></li>";
+					} while ($menuArray = mysqli_fetch_array($menuResult));
 					?>
-				</table>
+				</ul>
 			</div>
 		</div>	
 
@@ -73,7 +58,7 @@ do {
 			<!--reviews will be from people submitting one to the database and then appear on the page-->
 			<div class="col-md-6" >
 				<h3>Feedback</h3>
-				<form action="php/addPlaceFeedback.php" method="post" class="yellow-text">
+				<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" class="yellow-text">
 					<div class="row">
 						<div class="form-group col-md-8">
 							<label>User name:</label> 
@@ -81,7 +66,7 @@ do {
 						</div>
 						<div class="form-group col-md-4">
 							<label>Rating</label> 
-							<select class="form-control" name="rate">
+							<select class="form-control" name="type">
 								<option value="5">5</option>
 								<option value="4">4</option>
 								<option value="3">3</option>
@@ -93,47 +78,36 @@ do {
 					</div>
 					<div class="form-group">
 						<label>Feedback:</label> 
-						<textarea name="review" required rows="5" class="form-control black-text"></textarea>
+						<textarea type="text" name="review" required rows="5" class="form-control black-text"></textarea>
 					</div>
-					<input type="hidden" name="id" value="<?php echo $id; ?>"/>
-					<button class="btn btn-bg black-text" type="submit" name="submit">
-						<span class="glyphicon glyphicon-plus"></span>
-						&nbsp;&nbsp;Submit
-					</button>
+					<button class="btn btn-bg black-text" type="submit" name="submit"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Submit</button>
 				</form>
 			</div>
 
 			<div class="col-md-5 col-md-offset-1 yellow-text">
 				<h3>User's reviews</h3>
 				<div>
+					<!--rating's plugin-->
+					<!--php for rating-->       
 					<?php
-					// print comments
 					$ratingQuery = "SELECT * "
-							. "FROM place_rate "
-							. "WHERE place_id = '$id'";
+							. "FROM place_rate ";
 
 					$ratingResult = mysqli_query($db_con, $ratingQuery);
 
 					$row = mysqli_fetch_array($ratingResult);
-					if (mysqli_num_rows($ratingResult) > 0) {
-						do {
-							?>
-							<div class="user-comment">
-								<h3><?php echo $row['userName']; ?></h3>
-								<div class="">
-									<p class="yellow-text"><?php echo $row['review']; ?></p>
-								</div>
-								<div class="row">
-									<p class="col-md-6 yellow-text">Date: <?php echo $row['date']; ?></p>
-									<p class="col-md-3 col-md-offset-3 yellow-text">Rate:&nbsp;&nbsp;<?php echo $row['rate']; ?></p>
-								</div>
-							</div>
-							<?php
-						} while ($row = mysqli_fetch_array($ratingResult));
-					} else {
+
+					while ($row = mysqli_fetch_array($ratingResult)) {
 						?>
 						<div class="user-comment">
-							<h4>This place has no comments yet. Be the first one!</h4>
+							<h3><?php echo $row['userName']; ?></h3>
+							<div class="">
+								<p class="yellow-text"><?php echo $row['review']; ?></p>
+							</div>
+							<div class="row">
+								<p class="col-md-6 yellow-text">Date: <?php echo $row['date']; ?></p>
+								<p class="col-md-3 col-md-offset-3 yellow-text">Rate:&nbsp;&nbsp;<?php echo $row['rate']; ?></p>
+							</div>
 						</div>
 						<?php
 					}

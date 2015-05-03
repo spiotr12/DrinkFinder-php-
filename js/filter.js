@@ -14,7 +14,7 @@ $(document).ready(function () {
 			if (selectedTypes.length > 0) {
 				if ($.inArray(rowType.attr('value'), selectedTypes) == -1) {
 					// creates string to perform test
-//								str += "value: " + rowName.attr('value') + " -> inArray: " + $.inArray(rowType.attr('value'), selectedTypes) + "\n";
+//					str += "value: " + rowName.attr('value') + " -> inArray: " + $.inArray(rowType.attr('value'), selectedTypes) + "\n";
 					// hide things which do not match filters			
 					$(this).hide();
 				} else {
@@ -25,10 +25,7 @@ $(document).ready(function () {
 				// show all if no filter is selected
 				$(this).show();
 			}
-//							if ($(this).attr('value') == "beer") {
-//							}
 		});
-//					alert(str); // 
 	});
 });
 /*
@@ -44,6 +41,6 @@ function getSelected() {
 			str += $(this).attr('value') + ", ";
 		}
 	});
-//				alert("Selected types:\n" + selectedTypes);
+//	alert("Selected types:\n" + selectedTypes);
 	return selectedTypes;
 }

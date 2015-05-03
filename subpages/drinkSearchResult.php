@@ -4,8 +4,9 @@ Using php, appropriate table will display depending what user is looking for-->
 <?php
 $searchTerm = $_GET['searchFor'];
 
-$query = "SELECT * FROM drink WHERE UPPER(drink_name) LIKE UPPER('%$searchTerm%')";
-
+$query = "SELECT * FROM drink "
+		. "WHERE UPPER(drink_name) LIKE UPPER('%$searchTerm%')"
+		. "OR UPPER(type) LIKE UPPER('%$searchTerm%')";
 $result = mysqli_query($db_con, $query);
 /* USEFUL CODE GET ERROR MESSAGE
   if (!$check1_res){
@@ -15,6 +16,8 @@ $result = mysqli_query($db_con, $query);
 
 $resultArray = mysqli_fetch_array($result);
 ?>
+<title>Drink search: <?php echo $searchTerm; ?></title>
+
 <div class="container fullscreen">
 	<div class="row place-search">
 		<div class="row">
@@ -62,15 +65,21 @@ $resultArray = mysqli_fetch_array($result);
 					<tbody id="tableResult">
 						<!--SAMPLE DATA-->
 						<?php
-						do {
-							$id = $resultArray['drink_id'];
+						if (mysqli_num_rows($result) > 0) {
+							do {
+								$id = $resultArray['drink_id'];
+								echo "<tr>";
+								echo "	<td class='name' value='" . $resultArray['drink_name'] . "'><a href='drinker.php?link=drink&id=" . $id . "'>" . $resultArray['drink_name'] . "</a></td>";
+								echo "	<td class='type' value='" . $resultArray['type'] . "'>" . $resultArray['type'] . "</td>";
+								echo "	<td class='percent'>" . $resultArray['percent'] . "</td>";
+								echo "	<td class='rate'>" . getAverageRaring("drink", $id) . "</td>";
+								echo "</tr>";
+							} while ($resultArray = mysqli_fetch_array($result));
+						} else {
 							echo "<tr>";
-							echo "	<td class='name' value='" . $resultArray['drink_name'] . "'><a href='drinker.php?link=drink&id=" . $id . "'>" . $resultArray['drink_name'] . "</a></td>";
-							echo "	<td class='type' value='" . $resultArray['type'] . "'>" . $resultArray['type'] . "</td>";
-							echo "	<td class='percent'>" . $resultArray['percent'] . "</td>";
-							echo "	<td class='rate'>" . getAverageRaring("drink", $id) . "</td>";
+							echo "<td class='result-name'  colspan='0''>No result found for \"" . $searchTerm . "\"...</td>";
 							echo "</tr>";
-						} while ($resultArray = mysqli_fetch_array($result));
+						}
 						mysqli_close($db_con);
 						?>
 					</tbody>

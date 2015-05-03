@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 01 Maj 2015, 13:57
+-- Czas wygenerowania: 03 Maj 2015, 20:50
 -- Wersja serwera: 5.1.67
 -- Wersja PHP: 5.2.17
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `drink_rate` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `drink_id` (`drink_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Zrzut danych tabeli `drink_rate`
@@ -104,7 +104,22 @@ INSERT INTO `drink_rate` (`id`, `drink_id`, `rate`, `date`) VALUES
 (12, 2, 1, '2015-05-01 00:00:00'),
 (13, 2, 1, '2015-05-01 00:00:00'),
 (14, 5, 3, '2015-05-01 00:00:00'),
-(15, 5, 2, '2015-05-01 00:00:00');
+(15, 5, 2, '2015-05-01 00:00:00'),
+(16, 1, 3, '2015-05-01 00:00:00'),
+(17, 5, 5, '2015-05-03 00:00:00'),
+(18, 5, 5, '2015-05-03 00:00:00'),
+(19, 5, 5, '2015-05-03 00:00:00'),
+(20, 5, 5, '2015-05-03 00:00:00'),
+(21, 5, 5, '2015-05-03 00:00:00'),
+(22, 5, 5, '2015-05-03 00:00:00'),
+(23, 5, 5, '2015-05-03 00:00:00'),
+(24, 5, 5, '2015-05-03 00:00:00'),
+(25, 26, 3, '2015-05-03 00:00:00'),
+(26, 26, 3, '2015-05-03 00:00:00'),
+(27, 26, 3, '2015-05-03 00:00:00'),
+(28, 26, 4, '2015-05-03 00:00:00'),
+(29, 26, 3, '2015-05-03 00:00:00'),
+(30, 7, 5, '2015-05-03 20:42:03');
 
 -- --------------------------------------------------------
 
@@ -155,22 +170,24 @@ CREATE TABLE IF NOT EXISTS `place_rate` (
   `userName` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `rate` int(11) NOT NULL,
   `review` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `place_id` (`place_id`),
   KEY `place_id_2` (`place_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Zrzut danych tabeli `place_rate`
 --
 
 INSERT INTO `place_rate` (`id`, `place_id`, `userName`, `rate`, `review`, `date`) VALUES
-(3, 1, 'blah', 6, 'user', '2015-04-30 00:00:00'),
-(4, 2, 'blah', 5, 'colt', '2015-04-30 00:00:00'),
-(5, 2, 'hitler', 4, 'it was ok', '2015-04-30 00:00:00'),
-(6, 2, 'lol', 6, 'good', '2015-04-30 00:00:00'),
-(7, 2, 'lol', 6, 'good', '2015-04-30 00:00:00');
+(3, 1, 'blah', 6, 'user', '2015-04-30'),
+(4, 2, 'blah', 5, 'colt', '2015-04-30'),
+(5, 2, 'hitler', 4, 'it was ok', '2015-04-30'),
+(6, 2, 'lol', 6, 'good', '2015-04-30'),
+(7, 2, 'lol', 6, 'good', '2015-04-30'),
+(10, 11, 'Piotr', 4, 'Good club, nice music', '2015-05-03'),
+(11, 9, 'tester', 5, 'slains testing', '2015-05-03');
 
 -- --------------------------------------------------------
 
